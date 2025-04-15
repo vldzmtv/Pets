@@ -1,34 +1,37 @@
+# Created by https://www.toptal.com/developers/gitignore/api/macos,webstorm,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,webstorm,visualstudiocode
+
 ### macOS ###
-# Общий
+# General
 .DS_Store
 .AppleDouble
 .LSOverride
 
-# Значок должен заканчиваться двумя \r
-Икона
+# Icon must end with two \r
+Icon
 
 
-# Миниатюры
+# Thumbnails
 ._*
 
-# Файлы, которые могут появиться в корне тома
+# Files that might appear in the root of a volume
 .DocumentRevisions-V100
 .fseventsd
-.Прожектор-V100
-.ВременныеЭлементы
-.Мусор
+.Spotlight-V100
+.TemporaryItems
+.Trashes
 .VolumeIcon.icns
-.com.apple.timemachine.не представлено
+.com.apple.timemachine.donotpresent
 
-# Каталоги, потенциально созданные на удаленном ресурсе AFP
+# Directories potentially created on remote AFP share
 .AppleDB
 .AppleDesktop
-Сетевая папка для мусора
-Временные предметы
+Network Trash Folder
+Temporary Items
 .apdisk
 
-### Патч для macOS ###
-# Файлы, созданные iCloud
+### macOS Patch ###
+# iCloud generated files
 *.icloud
 
 ### VisualStudioCode ###
@@ -37,130 +40,130 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-!.vscode/*.фрагменты-кода
+!.vscode/*.code-snippets
 
-# Локальная история для Visual Studio Code
-.история/
+# Local History for Visual Studio Code
+.history/
 
-# Встроенные расширения Visual Studio Code
+# Built Visual Studio Code Extensions
 *.vsix
 
-### Патч VisualStudioCode ###
-# Игнорировать всю локальную историю файлов
-.история
-.ионид
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
-### Веб-Шторм ###
-# Охватывает IDE JetBrains: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm и Rider
-# Ссылка: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+### WebStorm ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
+# Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
-# Специфические для пользователя вещи
+# User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/usage.statistics.xml
-.idea/**/словари
-.идея/**/полка
+.idea/**/dictionaries
+.idea/**/shelf
 
-# AWS, специфичный для пользователя
+# AWS User-specific
 .idea/**/aws.xml
 
-# Сгенерированные файлы
+# Generated files
 .idea/**/contentModel.xml
 
-# Конфиденциальные или часто используемые файлы
+# Sensitive or high-churn files
 .idea/**/dataSources/
 .idea/**/dataSources.ids
 .idea/**/dataSources.local.xml
 .idea/**/sqlDataSources.xml
-.идея/**/динамический.xml
+.idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
-# Градл
+# Gradle
 .idea/**/gradle.xml
-.idea/**/библиотеки
+.idea/**/libraries
 
-# Gradle и Maven с автоматическим импортом
-# При использовании Gradle или Maven с автоматическим импортом следует исключить файлы модулей,
-# поскольку они будут созданы заново, и могут вызвать отток. Раскомментируйте, если используете
-# автоматический импорт.
-# .идея/артефакты
-# .idea/компилятор.xml
+# Gradle and Maven with auto-import
+# When using Gradle or Maven with auto-import, you should exclude module files,
+# since they will be recreated, and may cause churn.  Uncomment if using
+# auto-import.
+# .idea/artifacts
+# .idea/compiler.xml
 # .idea/jarRepositories.xml
 # .idea/modules.xml
-# .идея/*.iml
-# .идея/модули
+# .idea/*.iml
+# .idea/modules
 # *.iml
 # *.ipr
 
 # CMake
 cmake-build-*/
 
-# Плагин Mongo Explorer
+# Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
-# Файловый формат проекта
+# File-based project format
 *.iws
 
 # IntelliJ
-вне/
+out/
 
-# плагин mpeltonen/sbt-idea
-.идеи_модули/
+# mpeltonen/sbt-idea plugin
+.idea_modules/
 
-# плагин JIRA
+# JIRA plugin
 atlassian-ide-plugin.xml
 
-# Плагин Cursive Clojure
+# Cursive Clojure plugin
 .idea/replstate.xml
 
-# Плагин SonarLint
+# SonarLint plugin
 .idea/sonarlint/
 
-# Плагин Crashlytics (для Android Studio и IntelliJ)
+# Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
-crashlytics.свойства
-crashlytics-build.свойства
-свойства ткани
+crashlytics.properties
+crashlytics-build.properties
+fabric.properties
 
-# Rest Client на основе редактора
+# Editor-based Rest Client
 .idea/httpRequests
 
-# Сериализованный файл кэша Android Studio 3.1+
+# Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-### Патч WebStorm ###
-# Причина комментария: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+### WebStorm Patch ###
+# Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
 # *.iml
-# модули.xml
+# modules.xml
 # .idea/misc.xml
 # *.ipr
 
-# Плагин Sonarlint
+# Sonarlint plugin
 # https://plugins.jetbrains.com/plugin/7973-sonarlint
 .idea/**/sonarlint/
 
-# Плагин SonarQube
+# SonarQube Plugin
 # https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
 .idea/**/sonarIssues.xml
 
-# Плагин Markdown Navigator
+# Markdown Navigator plugin
 # https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator-enh.xml
 .idea/**/markdown-navigator/
 
-# Ошибка создания кэш-файла
-# См. https://youtrack.jetbrains.com/issue/JBR-2257
+# Cache file creation bug
+# See https://youtrack.jetbrains.com/issue/JBR-2257
 .idea/$CACHE_FILE$
 
-# Плагин CodeStream
+# CodeStream plugin
 # https://plugins.jetbrains.com/plugin/12206-codestream
 .idea/codestream.xml
 
-# Набор инструментов Azure для плагина IntelliJ
+# Azure Toolkit for IntelliJ plugin
 # https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
 .idea/**/azureSettings.xml
 
-# Конец https://www.toptal.com/developers/gitignore/api/macos,webstorm,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/macos,webstorm,visualstudiocode

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="pets.css" />
+
+		<title>Document</title>
+	</head>
+	<body>
+		<header class="header header_theme">
+			<div class="container header_main">
+				<a class="header_logo" href="index.html">
+					<h1 class="header_title">Cozy House</h1>
+					<p class="header_subtitle">Shelter for pets in Boston</p>
+				</a>
+
+				<div class="header-menu menu">
+					<button class="menu-button">
+						<span class="menu-button-icon">
+							<span class="menu-button-icon-line"></span>
+						</span>
+					</button>
+					<nav class="menu-body menu-burger">
+						<ul class="menu-list">
+							<li class="menu-item">
+								<a href="index.html" class="menu-link">About the shelter</a>
+							</li>
+							<li class="menu-item">
+								<a href="#" class="menu-link menu-link-underline">Our pets</a>
+							</li>
+							<li class="menu-item">
+								<a href="#" class="menu-link">Help the shelter</a>
+							</li>
+							<li class="menu-item">
+								<a href="#footer" class="menu-link">Contacts</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+		<main class="main main-pets-section">
+			<section class="main-section">
+				<div class="container main-section-wrapper">
+					<h3 class="main-section-title">
+						Our friends who <br />
+						are looking for a house
+					</h3>
+					<div class="main-section-container"></div>
+					<div class="pets-navigation">
+						<button class="button button-navigation button-navigation-left">
+							<p class="navigation-left-arrow"><<</p>
+						</button>
+						<button class="button button-navigation button-navigation-left">
+							<p class="navigation-left-arrow"><</p>
+						</button>
+						<button class="button button-navigation button-navigation-number">
+							1
+						</button>
+						<button class="button button-navigation button-navigation-right">
+							<p class="navigation-right-arrow">></p>
+						</button>
+						<button class="button button-navigation button-navigation-right">
+							<p class="navigation-right-arrow">>></p>
+						</button>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="footer" id="footer">
+			<div class="container footer-main">
+				<div class="footer-contacts">
+					<h3 class="footer-title">For questions and suggestions</h3>
+					<a href="mailto:email@shelter.com" class="footer-link">
+						<img src="media/icon-email.svg" alt="email" />
+						<h4>email@shelter.com</h4>
+					</a>
+					<a href="tel:+136745677554" class="footer-link">
+						<img src="media/icon-phone.svg" alt="phone" />
+						<h4>+13 674 567 75 54</h4>
+					</a>
+				</div>
+				<div class="footer-location">
+					<h3 class="footer-title">We are waiting for your visit</h3>
+					<a
+						href="https://maps.app.goo.gl/Fyd4mMrkoCz2SKzk6"
+						class="footer-link"
+					>
+						<img src="media/icon-marker.svg" alt="marker" />
+						<h4>1 Central Street, Boston (entrance from the store)</h4>
+					</a>
+					<a
+						href="https://maps.app.goo.gl/vjWoc3zQrzmoqPc66"
+						class="footer-link"
+					>
+						<img src="media/icon-marker.svg" alt="marker" />
+						<h4>18 South Park, London</h4>
+					</a>
+				</div>
+				<img src="media/footer-puppy.png" alt="puppy" class="footer-img" />
+			</div>
+		</footer>
+	</body>
+	<script src="pets.js"></script>
+	<script>
+		const container = document.querySelector('.main-section-container')
+
+		pets.forEach(pet => {
+			const card = document.createElement('div')
+			card.classList.add('card')
+
+			card.innerHTML = `
+		<img src="${pet.img}" class="card-img" alt="${pet.name}" />
+		<p class="card-name">${pet.name}</p>
+		<button class="button card-button">Learn more</button>
+	`
+
+			container.appendChild(card)
+		})
+	</script>
+</html>

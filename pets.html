@@ -64,6 +64,7 @@
 						<button class="button button-navigation button-navigation-right">
 							<p class="navigation-right-arrow">>></p>
 						</button>
+					
 					</div>
 				</div>
 			</section>
@@ -101,6 +102,38 @@
 				<img src="media/footer-puppy.png" alt="puppy" class="footer-img" />
 			</div>
 		</footer>
+	
+		<div class="overlay modal hidden">
+			<div class="modal-window">
+				<img src="" alt="" class="modal-img" />
+				<div class="modal-content">
+					<h3 class="modal-name"></h3>
+					<h4 class="modal-type-breed"></h4>
+					<p class="modal-description"></p>
+					<ul class="modal-list">
+						<li>
+							<b class="modal-list-item">Age:</b>
+							<span class="modal-age modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Inoculations:</b>
+							<span class="modal-inoculations modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Diseases:</b>
+							<span class="modal-diseases modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Parasites:</b>
+							<span class="modal-parasites modal-list-item-text"></span>
+						</li>
+					</ul>
+				</div>
+				<button class="button modal-close">
+					<img src="/media/Vector.svg"></img>
+				</button>
+			</div>
+		</div>
 	</body>
 	<script src="pets.js"></script>
 	<script>
@@ -113,10 +146,55 @@
 			card.innerHTML = `
 		<img src="${pet.img}" class="card-img" alt="${pet.name}" />
 		<p class="card-name">${pet.name}</p>
-		<button class="button card-button">Learn more</button>
-	`
+		<button class="button card-button">Learn more</button>`
 
 			container.appendChild(card)
+		})
+		const body = document.body
+		const modal = document.querySelector('.overlay.modal')
+		const modalImg = document.querySelector('.modal-img')
+		const modalName = document.querySelector('.modal-name')
+		const modalTypeBreed = document.querySelector('.modal-type-breed')
+		const modalDescription = document.querySelector('.modal-description')
+		const modalAge = document.querySelector('.modal-age')
+		const modalInoculations = document.querySelector('.modal-inoculations')
+		const modalDiseases = document.querySelector('.modal-diseases')
+		const modalParasites = document.querySelector('.modal-parasites')
+		const closeModalBtn = document.querySelector('.modal-close')
+
+		document.querySelectorAll('.card-button').forEach((btn, index) => {
+			btn.addEventListener('click', () => {
+				const pet = pets[index]
+				modalImg.src = pet.img
+				modalImg.alt = pet.name
+				modalName.textContent = pet.name
+				modalTypeBreed.textContent = `${pet.type} - ${pet.breed}`
+				modalDescription.textContent = pet.description
+				modalAge.textContent = pet.age
+				modalInoculations.textContent = pet.inoculations.join(', ')
+				modalDiseases.textContent = pet.diseases.join(', ')
+				modalParasites.textContent = pet.parasites.join(', ')
+
+				modal.classList.remove('hidden')
+				body.classList.add('no-scroll')
+			})
+		})
+
+		closeModalBtn.addEventListener('click', () => {
+			modal.classList.add('hidden')
+			body.classList.remove('no-scroll')
+		})
+
+		modal.addEventListener('click', e => {
+			if (e.target === modal) {
+				modal.classList.add('hidden')
+			}
+		})
+		modal.addEventListener('click', e => {
+			if (e.target === modal) {
+				modal.classList.add('hidden')
+				body.classList.remove('no-scroll') 
+			}
 		})
 	</script>
 </html>

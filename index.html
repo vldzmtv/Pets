@@ -21,8 +21,8 @@
 					<ul class="menu-items">
 						<li><a href="#" class="aboutTheShelter">About the shelter</a></li>
 						<li><a href="/pets.html" class="menu-items-li">Our pets</a></li>
-						<li><a href="#" class="menu-items-li">Help the shelter</a></li>
-						<li><a href="#" class="menu-items-li">Contacts</a></li>
+						<li><a href="#help" class="menu-items-li">Help the shelter</a></li>
+						<li><a href="#contact" class="menu-items-li">Contacts</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -74,55 +74,15 @@
 					<button class="btn-previous-next">
 						<img src="/media/Arrow-left.svg" alt="arrow-left" />
 					</button>
-					<div class="slider">
-						<div class="card">
-							<img src="/media/pets-katrine.png" alt="katrine" />
-							<h4>Katrine</h4>
-							<button class="btn-lrn-more" id="learnMoreBtn">Learn more</button>
-							<div id="myModal" class="modal">
-								<span class="close-btn" id="closeBtn">&times;</span>
-								<div class="modal-content">
-									<div class="pet-img">
-										<img src="media/pets-jennifer-modal.png" alt="jennifer" />
-									</div>
-									<div class="pet-info">
-										<div class="pet-name">Jennifer</div>
-										<div class="pet-about" style="color: black">
-											<div class="pet-type">Dog</div>
-											<span class="pet-span">-</span>
-											<div class="pet-breed">Labrador</div>
-										</div>
-										<div class="pet-description">
-											Jennifer is a sweet 2 months old Labrador that is
-											patiently waiting to find a new forever home. This girl
-											really enjoys being able to go outside to run and play,
-											but won't hesitate to play up a storm in the house if she
-											has all of her favorite toys.
-										</div>
-										<ul class="pet-list">
-											<li class="pet-item age"><span>Age:</span></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<img src="/media/pets-jennifer.png" alt="jennifer" />
-							<h4>Jennifer</h4>
-							<button class="btn-lrn-more">Learn more</button>
-						</div>
-						<div class="card">
-							<img src="/media/pets-woody.png" alt="woody" />
-							<h4>Woody</h4>
-							<button class="btn-lrn-more">Learn more</button>
-						</div>
-					</div>
+					<div class="slider" id="petsSlider"></div>
 					<button class="btn-previous-next">
 						<img src="/media/Arrow-right.svg" alt="right-arrow" />
 					</button>
 				</div>
 				<div class="get-to-know">
-					<button class="btn-get-to-know">Get to know the rest</button>
+					<button class="btn-get-to-know">
+						<a href="pets.html">Get to know the rest</a>
+					</button>
 				</div>
 			</div>
 		</section>
@@ -197,7 +157,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="donation-section">
+		<section class="donation-section" id="help">
 			<div class="donation-section-content widthMar">
 				<img
 					src="media/donation-dog.png"
@@ -220,7 +180,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="footer-section">
+		<section class="footer-section" id="contact">
 			<footer class="main-footer widthMar">
 				<div class="footer-content">
 					<div class="footer-list">
@@ -263,7 +223,117 @@
 				</div>
 			</footer>
 		</section>
+		<div class="overlay modal hidden">
+			<div class="modal-window">
+				<img src="" alt="" class="modal-img" />
+				<div class="modal-content">
+					<h3 class="modal-name"></h3>
+					<h4 class="modal-type-breed"></h4>
+					<p class="modal-description"></p>
+					<ul class="modal-list">
+						<li>
+							<b class="modal-list-item">Age:</b>
+							<span class="modal-age modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Inoculations:</b>
+							<span class="modal-inoculations modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Diseases:</b>
+							<span class="modal-diseases modal-list-item-text"></span>
+						</li>
+						<li>
+							<b class="modal-list-item">Parasites:</b>
+							<span class="modal-parasites modal-list-item-text"></span>
+						</li>
+					</ul>
+				</div>
+				<button class="button modal-close">
+					<img src="/media/Vector.svg" alt="Close" />
+				</button>
+			</div>
+		</div>
 	</body>
 	<script src="pets.js"></script>
-	<script></script>
+	<script>
+		const petsWrapper = document.querySelector('.slider')
+		const leftBtn = document.querySelectorAll('.btn-previous-next')[0]
+		const rightBtn = document.querySelectorAll('.btn-previous-next')[1]
+
+		const cardsPerPage = 3
+		let currentIndex = 0
+
+		function createCard(pet) {
+			return `
+		<div class="card">
+			<img src="${pet.img}" alt="${pet.name}" />
+			<h4>${pet.name}</h4>
+			<button class="btn-lrn-more" data-id="${pet.id}">Learn more</button>
+		</div>
+	`
+		}
+
+		function renderCards() {
+			petsWrapper.innerHTML = ''
+			const petsToShow = pets.slice(currentIndex, currentIndex + cardsPerPage)
+			petsToShow.forEach(pet => {
+				petsWrapper.innerHTML += createCard(pet)
+			})
+		}
+		leftBtn.addEventListener('click', () => {
+			if (currentIndex - cardsPerPage >= 0) {
+				currentIndex -= cardsPerPage
+				renderCards()
+			}
+		})
+
+		rightBtn.addEventListener('click', () => {
+			if (currentIndex + cardsPerPage < pets.length) {
+				currentIndex += cardsPerPage
+				renderCards()
+			}
+		})
+		renderCards()
+
+		const body = document.body
+		const modal = document.querySelector('.overlay.modal')
+		const modalImg = document.querySelector('.modal-img')
+		const modalName = document.querySelector('.modal-name')
+		const modalTypeBreed = document.querySelector('.modal-type-breed')
+		const modalDescription = document.querySelector('.modal-description')
+		const modalAge = document.querySelector('.modal-age')
+		const modalInoculations = document.querySelector('.modal-inoculations')
+		const modalDiseases = document.querySelector('.modal-diseases')
+		const modalParasites = document.querySelector('.modal-parasites')
+		const closeModalBtn = document.querySelector('.modal-close')
+
+		function openModal(pet) {
+			modalImg.src = pet.img
+			modalImg.alt = pet.name
+			modalName.textContent = pet.name
+			modalTypeBreed.textContent = `${pet.type} - ${pet.breed}`
+			modalDescription.textContent = pet.description
+			modalAge.textContent = pet.age
+			modalInoculations.textContent = pet.inoculations.join(', ')
+			modalDiseases.textContent = pet.diseases.join(', ')
+			modalParasites.textContent = pet.parasites.join(', ')
+
+			modal.classList.remove('hidden')
+			body.style.overflow = 'hidden'
+		}
+
+		closeModalBtn.addEventListener('click', () => {
+			modal.classList.add('hidden')
+			body.style.overflow = ''
+		})
+
+		petsWrapper.addEventListener('click', e => {
+			if (e.target.classList.contains('btn-lrn-more')) {
+				const id = e.target.getAttribute('data-id')
+				const pet = pets.find(p => p.id == id)
+				if (pet) openModal(pet)
+			}
+		})
+	</script>
 </html>
